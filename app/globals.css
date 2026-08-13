@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --background: #171512;
+  --surface: #1f1c18;
+  --surface-raised: #292420;
+  --foreground: #f5f1e8;
+  --muted: #a8a196;
+  --accent-gold: #e8c468;
+
+  /* Per-user accent colors — assigned per profile, not fixed to "user 1/2" */
+  --accent-lime: #baff29;
+  --accent-coral: #ff5c7a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-lime: var(--accent-lime);
+  --color-accent-coral: var(--accent-coral);
+  --font-sans: var(--font-sora);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
