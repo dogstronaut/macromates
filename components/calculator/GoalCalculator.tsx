@@ -3,6 +3,8 @@
 import { useState } from "react";
 import {
   calculateTdee,
+  feetInchesToCm,
+  poundsToKg,
   type ActivityLevel,
   type Goal,
   type Sex,
@@ -31,8 +33,9 @@ export function GoalCalculator({
   const [open, setOpen] = useState(false);
   const [sex, setSex] = useState<Sex>("male");
   const [age, setAge] = useState(30);
-  const [heightCm, setHeightCm] = useState(175);
-  const [weightKg, setWeightKg] = useState(75);
+  const [heightFeet, setHeightFeet] = useState(5);
+  const [heightInches, setHeightInches] = useState(9);
+  const [weightLb, setWeightLb] = useState(165);
   const [activityLevel, setActivityLevel] = useState<ActivityLevel>("moderate");
   const [goal, setGoal] = useState<Goal>("maintain");
   const [result, setResult] = useState<TdeeResult | null>(null);
@@ -77,7 +80,7 @@ export function GoalCalculator({
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 gap-3">
         <label className="flex flex-col gap-1 text-xs text-muted">
           Age
           <input
@@ -88,23 +91,38 @@ export function GoalCalculator({
           />
         </label>
         <label className="flex flex-col gap-1 text-xs text-muted">
-          Height (cm)
+          Weight (lb)
           <input
             type="number"
-            value={heightCm}
-            onChange={(e) => setHeightCm(Number(e.target.value))}
+            value={weightLb}
+            onChange={(e) => setWeightLb(Number(e.target.value))}
             className="rounded-lg border border-white/10 bg-surface px-2 py-2 text-sm text-foreground outline-none focus:border-accent-lime"
           />
         </label>
-        <label className="flex flex-col gap-1 text-xs text-muted">
-          Weight (kg)
-          <input
-            type="number"
-            value={weightKg}
-            onChange={(e) => setWeightKg(Number(e.target.value))}
-            className="rounded-lg border border-white/10 bg-surface px-2 py-2 text-sm text-foreground outline-none focus:border-accent-lime"
-          />
-        </label>
+      </div>
+
+      <div className="flex flex-col gap-1 text-xs text-muted">
+        Height
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex items-center gap-1">
+            <input
+              type="number"
+              value={heightFeet}
+              onChange={(e) => setHeightFeet(Number(e.target.value))}
+              className="w-full rounded-lg border border-white/10 bg-surface px-2 py-2 text-sm text-foreground outline-none focus:border-accent-lime"
+            />
+            <span>ft</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <input
+              type="number"
+              value={heightInches}
+              onChange={(e) => setHeightInches(Number(e.target.value))}
+              className="w-full rounded-lg border border-white/10 bg-surface px-2 py-2 text-sm text-foreground outline-none focus:border-accent-lime"
+            />
+            <span>in</span>
+          </div>
+        </div>
       </div>
 
       <label className="flex flex-col gap-1 text-xs text-muted">
@@ -141,7 +159,14 @@ export function GoalCalculator({
         type="button"
         onClick={() =>
           setResult(
-            calculateTdee({ sex, age, heightCm, weightKg, activityLevel, goal })
+            calculateTdee({
+              sex,
+              age,
+              heightCm: feetInchesToCm(heightFeet, heightInches),
+              weightKg: poundsToKg(weightLb),
+              activityLevel,
+              goal,
+            })
           )
         }
         className="btn-glow btn-glow-lime rounded-xl bg-accent-lime px-4 py-2.5 text-sm font-bold text-background"

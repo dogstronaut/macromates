@@ -46,6 +46,14 @@ export interface TdeeResult {
   proteinGoal: number;
 }
 
+export function feetInchesToCm(feet: number, inches: number): number {
+  return (feet * 12 + inches) * 2.54;
+}
+
+export function poundsToKg(pounds: number): number {
+  return pounds * 0.45359237;
+}
+
 /**
  * Mifflin-St Jeor BMR + activity-scaled TDEE, with a goal-based calorie
  * adjustment and a bodyweight-scaled protein target.
