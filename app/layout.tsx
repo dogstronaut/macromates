@@ -9,7 +9,7 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: "macromates",
-  description: "Log fast, fill your ring, and keep your mate honest.",
+  description: "The couple's way to lose weight together — log fast, fill your ring, and keep each other honest.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

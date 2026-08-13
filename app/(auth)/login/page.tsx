@@ -8,7 +8,7 @@ export default function LoginPage() {
           macro<span className="gradient-text">mates</span>
         </h1>
         <p className="mt-2 text-muted">
-          Log in and see who&apos;s winning today. 🏆
+          Lose it together. Log in and see who&apos;s winning today. 🏆
         </p>
       </div>
       <LoginForm />
