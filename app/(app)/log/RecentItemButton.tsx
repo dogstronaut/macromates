@@ -28,7 +28,7 @@ export function RecentItemButton({
           logExistingFoodItem(foodItemId, 1, mealCategory);
         })
       }
-      className="flex flex-col items-start gap-1 rounded-xl border border-white/10 bg-surface-raised px-4 py-3 text-left text-sm transition hover:border-accent-lime disabled:opacity-60"
+      className="flex flex-col items-start gap-1 rounded-xl border border-white/10 bg-surface-raised px-4 py-3 text-left text-sm transition hover:-translate-y-0.5 hover:border-accent-lime disabled:opacity-60"
     >
       <span className="font-medium">{name}</span>
       <span className="text-xs text-muted">

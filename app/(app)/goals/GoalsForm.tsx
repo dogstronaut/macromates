@@ -3,11 +3,14 @@
 import { useState, useTransition } from "react";
 import { updateGoals } from "./actions";
 import type { UserProfile } from "@/types/database";
+import { GoalCalculator } from "@/components/calculator/GoalCalculator";
 
 export function GoalsForm({ profile }: { profile: UserProfile }) {
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const [calorieGoal, setCalorieGoal] = useState(profile.daily_calorie_goal);
+  const [proteinGoal, setProteinGoal] = useState(profile.daily_protein_goal);
 
   return (
     <form
@@ -25,7 +28,8 @@ export function GoalsForm({ profile }: { profile: UserProfile }) {
         <input
           type="number"
           name="dailyCalorieGoal"
-          defaultValue={profile.daily_calorie_goal}
+          value={calorieGoal}
+          onChange={(e) => setCalorieGoal(Number(e.target.value))}
           required
           className="rounded-xl border border-white/10 bg-surface px-4 py-3 text-foreground outline-none focus:border-accent-lime"
         />
@@ -35,11 +39,20 @@ export function GoalsForm({ profile }: { profile: UserProfile }) {
         <input
           type="number"
           name="dailyProteinGoal"
-          defaultValue={profile.daily_protein_goal}
+          value={proteinGoal}
+          onChange={(e) => setProteinGoal(Number(e.target.value))}
           required
           className="rounded-xl border border-white/10 bg-surface px-4 py-3 text-foreground outline-none focus:border-accent-lime"
         />
       </label>
+
+      <GoalCalculator
+        onApply={(calories, protein) => {
+          setCalorieGoal(calories);
+          setProteinGoal(protein);
+        }}
+      />
+
       <label className="flex flex-col gap-2 text-sm text-muted">
         Daily carbs (g) — optional
         <input
@@ -61,13 +74,13 @@ export function GoalsForm({ profile }: { profile: UserProfile }) {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-xl bg-accent-lime px-4 py-3 font-semibold text-background transition hover:brightness-110 disabled:opacity-60"
+        className="btn-glow btn-glow-lime rounded-xl bg-accent-lime px-4 py-3 font-bold text-background transition disabled:opacity-60"
       >
         {isPending ? "Saving..." : "Save goals"}
       </button>
       {error && <p className="text-sm text-accent-coral">{error}</p>}
       {saved && !error && (
-        <p className="text-sm text-accent-lime">Goals updated.</p>
+        <p className="text-sm text-accent-lime">Goals updated. 🎯</p>
       )}
     </form>
   );

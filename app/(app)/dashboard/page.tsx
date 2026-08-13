@@ -84,17 +84,17 @@ export default async function DashboardPage() {
       />
 
       {mate && (
-        <p className="text-center text-sm text-muted">
+        <p className="text-center text-sm font-medium text-muted">
           {proteinGap === 0
-            ? "You're tied with " + mate.name + " today 🤝"
+            ? `Dead even with ${mate.name} today 🤝`
             : proteinGap > 0
               ? `You're ${Math.round(proteinGap)}g ahead of ${mate.name} today 🔥`
-              : `You're ${Math.round(Math.abs(proteinGap))}g behind ${mate.name} today 👀`}
+              : `${mate.name}'s ${Math.round(Math.abs(proteinGap))}g ahead — catch up! 👀`}
         </p>
       )}
 
-      <section className="w-full max-w-sm rounded-2xl bg-surface p-5">
-        <h2 className="mb-4 font-semibold">What&apos;s left today</h2>
+      <section className="pop-in w-full max-w-sm rounded-2xl bg-surface p-5">
+        <h2 className="mb-4 font-bold">What&apos;s left today</h2>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
             <p className="text-muted">Protein remaining</p>

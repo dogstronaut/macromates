@@ -53,13 +53,16 @@ export function ProgressRings({ left, right, size = 220 }: ProgressRingsProps) {
   return (
     <div className="flex flex-col items-center gap-4">
       <div
-        className="relative"
-        style={{ width: size, height: size * 0.7 }}
+        className={`relative ${bothComplete ? "celebrate" : "pop-in"}`}
+        style={{
+          width: size,
+          height: size * 0.7,
+          filter: bothComplete
+            ? `drop-shadow(0 0 18px color-mix(in srgb, ${left.color} 55%, transparent)) drop-shadow(0 0 18px color-mix(in srgb, ${right.color} 55%, transparent))`
+            : undefined,
+        }}
       >
-        <svg
-          viewBox="0 0 150 100"
-          className={bothComplete ? "animate-pulse" : undefined}
-        >
+        <svg viewBox="0 0 150 100">
           <circle
             cx="50"
             cy="50"
@@ -84,6 +87,11 @@ export function ProgressRings({ left, right, size = 220 }: ProgressRingsProps) {
           </g>
         </svg>
       </div>
+      {bothComplete && (
+        <p className="gradient-text text-lg font-extrabold tracking-tight">
+          🎉 Goal smashed — both of you!
+        </p>
+      )}
       <div className="flex gap-10 text-sm">
         <span className="flex items-center gap-2">
           <span

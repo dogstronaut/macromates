@@ -2,11 +2,14 @@
 
 import { useState, useTransition } from "react";
 import { completeOnboarding } from "./actions";
+import { GoalCalculator } from "@/components/calculator/GoalCalculator";
 
 export function OnboardingForm() {
   const [mode, setMode] = useState<"create" | "join">("create");
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const [calorieGoal, setCalorieGoal] = useState(2000);
+  const [proteinGoal, setProteinGoal] = useState(150);
 
   return (
     <form
@@ -64,7 +67,8 @@ export function OnboardingForm() {
           <input
             type="number"
             name="dailyCalorieGoal"
-            defaultValue={2000}
+            value={calorieGoal}
+            onChange={(e) => setCalorieGoal(Number(e.target.value))}
             required
             className="rounded-xl border border-white/10 bg-surface px-4 py-3 text-foreground outline-none focus:border-accent-lime"
           />
@@ -74,19 +78,27 @@ export function OnboardingForm() {
           <input
             type="number"
             name="dailyProteinGoal"
-            defaultValue={150}
+            value={proteinGoal}
+            onChange={(e) => setProteinGoal(Number(e.target.value))}
             required
             className="rounded-xl border border-white/10 bg-surface px-4 py-3 text-foreground outline-none focus:border-accent-lime"
           />
         </label>
       </div>
 
+      <GoalCalculator
+        onApply={(calories, protein) => {
+          setCalorieGoal(calories);
+          setProteinGoal(protein);
+        }}
+      />
+
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-xl bg-accent-lime px-4 py-3 font-semibold text-background transition hover:brightness-110 disabled:opacity-60"
+        className="btn-glow btn-glow-lime rounded-xl bg-accent-lime px-4 py-3 font-bold text-background transition disabled:opacity-60"
       >
-        {isPending ? "Saving..." : "Let's go"}
+        {isPending ? "Setting things up..." : "Let's go! 🚀"}
       </button>
       {error && <p className="text-sm text-accent-coral">{error}</p>}
     </form>

@@ -109,9 +109,9 @@ export function QuickAddForm() {
         <button
           type="submit"
           disabled={isPending}
-          className="ml-auto rounded-xl bg-accent-lime px-4 py-2 text-sm font-semibold text-background transition hover:brightness-110 disabled:opacity-60"
+          className="btn-glow btn-glow-lime ml-auto rounded-xl bg-accent-lime px-4 py-2 text-sm font-bold text-background transition disabled:opacity-60"
         >
-          {isPending ? "Logging..." : "Log it"}
+          {isPending ? "Logging..." : "Log it 💪"}
         </button>
       </div>
       {error && <p className="text-sm text-accent-coral">{error}</p>}

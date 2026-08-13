@@ -9,7 +9,7 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: "macromates",
-  description: "Track macros, chase streaks, keep your mate honest.",
+  description: "Log fast, fill your ring, and keep your mate honest.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

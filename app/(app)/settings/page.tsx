@@ -17,7 +17,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="flex flex-col items-center gap-6 pt-12 text-center">
-      <h1 className="text-xl font-bold">Settings</h1>
+      <h1 className="text-xl font-extrabold">Settings</h1>
       <div className="w-full max-w-sm rounded-2xl bg-surface p-5 text-left text-sm">
         <p className="text-muted">Name</p>
         <p className="mb-3 font-medium">{profile.name}</p>
@@ -25,7 +25,8 @@ export default async function SettingsPage() {
         <p className="break-all font-mono text-xs">{profile.household_id}</p>
       </div>
       <p className="max-w-xs text-sm text-muted">
-        Nudge presets and notification preferences land in Phase 5.
+        Nudges and notifications are coming soon — for now, hold each other
+        accountable the old-fashioned way. 😏
       </p>
     </div>
   );

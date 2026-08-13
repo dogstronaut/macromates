@@ -139,7 +139,7 @@ export default async function LogPage() {
 
         {logEntries.length === 0 && (
           <p className="text-center text-sm text-muted">
-            Nothing logged yet today — add your first item above.
+            Nothing logged yet today — get on the board! 🍽️
           </p>
         )}
       </section>

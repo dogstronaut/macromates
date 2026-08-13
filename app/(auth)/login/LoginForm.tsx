@@ -37,9 +37,9 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-xl bg-accent-lime px-4 py-3 font-semibold text-background transition hover:brightness-110 disabled:opacity-60"
+        className="btn-glow btn-glow-lime rounded-xl bg-accent-lime px-4 py-3 font-bold text-background transition disabled:opacity-60"
       >
-        {isPending ? "Sending..." : "Send magic link"}
+        {isPending ? "Sending..." : "Send magic link ✨"}
       </button>
       {message && (
         <p

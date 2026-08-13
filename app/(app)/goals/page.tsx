@@ -19,7 +19,9 @@ export default async function GoalsPage() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <h1 className="text-xl font-bold">Your goals</h1>
+      <h1 className="text-xl font-extrabold">
+        Your <span className="gradient-text">goals</span>
+      </h1>
       <GoalsForm profile={profile as UserProfile} />
     </div>
   );

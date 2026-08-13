@@ -34,7 +34,9 @@ export default async function AppLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <header className="flex items-center justify-between border-b border-white/5 px-6 py-4">
-        <span className="text-lg font-bold tracking-tight">macromates</span>
+        <span className="text-lg font-extrabold tracking-tight">
+          macro<span className="gradient-text">mates</span>
+        </span>
         <form action={signOut}>
           <button type="submit" className="text-sm text-muted hover:text-foreground">
             Sign out
@@ -49,7 +51,7 @@ export default async function AppLayout({
           <Link
             key={item.href}
             href={item.href}
-            className="px-3 py-1 text-sm font-medium text-muted transition hover:text-foreground"
+            className="px-3 py-1 text-sm font-medium text-muted transition hover:scale-105 hover:text-foreground"
           >
             {item.label}
           </Link>
