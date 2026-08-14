@@ -25,8 +25,8 @@ overlapping progress rings.
    npm run dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000). First login sends a
-   Supabase magic link; new users land on `/onboarding` to start or join a
+4. Open [http://localhost:3000](http://localhost:3000). Sign up with an
+   email + password; new users land on `/onboarding` to start or join a
    household and set initial goals.
 
 ## Build phases
